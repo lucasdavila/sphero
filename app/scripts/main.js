@@ -1,6 +1,5 @@
 /*global sphero, $*/
 
-
 window.sphero = {
     Models: {},
     Collections: {},
@@ -8,7 +7,6 @@ window.sphero = {
     Routers: {},
     init: function () {
         'use strict';
-        console.log('Hello from Backbone!');
     }
 };
 

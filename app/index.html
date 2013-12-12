@@ -23,7 +23,7 @@
         <![endif]-->
 
 
-        <div id='app'></div>
+        <div id='app_container'></div>
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -40,11 +40,21 @@
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
+
+        <script src="//static.getchute.com/chutejs/v1/chute.min.js"></script>
+        <script src="//static.getchute.com/chutejs/v1/components/display.min.js"></script>
+        <script src="//static.getchute.com/chutejs/v1/components/data.min.js"></script>
+        <script src="//static.getchute.com/chutejs/v1/components/api.min.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <script src="scripts/templates.js"></script>
+        <script src="scripts/collections/asset.js"></script>
+        <script src="scripts/views/app.js"></script>
+        <script src="scripts/views/asset.js"></script>
+        <script src="scripts/views/asset_collection.js"></script>
+        <script src="scripts/routes/default.js"></script>
         <!-- endbuild -->
 </body>
 </html>
