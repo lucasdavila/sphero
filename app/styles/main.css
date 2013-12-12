@@ -6,3 +6,67 @@ body {
     margin: 50px auto 0 auto;
     width: 300px;
 }
+
+body                { padding: 0; width: 810px; margin: 0 auto; font-size: 14.5px; color: #1c2600;
+                      font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; }
+
+.clear              { clear: both; }
+.xleft              { float: left; }
+.xright             { float: right; }
+a                   { text-decoration: none; }
+li                  { list-style: none }
+
+h2                  { font-size: 24px; font-family: 'Raleway', sans-serif; font-weight: bold; color: #c9c9c9; padding-bottom: 5px;
+                      width: 100%; border-bottom: 1px solid #cacaca; text-align: left;}
+
+header              { height: 457px; width: 100%; background: url(/images/header_bg.png);}
+header ul           { padding: 385px 0 0 35px; float: left; font-size: 14px; }
+header li.text      { width: 146px; height: 53px; float: left; line-height: 15px; margin: 4px 32px 0 0; text-align: center;}
+header li.small     { line-height: 13px; margin-top: 1px; }
+header li.number    { float: left; font-weight: bold; margin: 7px 1px 0 0;}
+
+#container          { border: 1px solid #c4cde0; border-top: none; -webkit-border-radius: 0 0 4px 4px;  -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; }
+
+#nav                { height: 162px; text-align: center; padding: 33px 0 15px 0;
+                      background: #e6eaec url(/images/content_bg.png); background-repeat: no-repeat; }
+
+#social             { width: 190px; margin: 0 auto; margin-bottom: 12px;}
+.twitter-share-button { margin: -27px -30px 0 0; }
+
+#content            { padding: 19px;}
+
+a.radius            { -webkit-border-radius: 4px;  -moz-border-radius: 4px; border-radius: 4px; }
+
+a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 15px 15px 15px 62px;
+                      background: #009fdd url(/images/upload.png); background-repeat: no-repeat;
+                      background-position: 7% 55%; font-size: 14px;}
+
+#nav-links          { margin: 0 auto; width: 625px;}
+#nav-links a        { border: 2px solid #babec0; color: #abaeaf; width: 184px; height: 37px;
+                      display: block; float: left; margin: 10px; font-size: 18px; line-height: 37px;}
+#nav-links .selected{ color:#1c2600; background: #fff; border-color: #fff; }
+
+#content            { font-family: 'Raleway', sans-serif; text-align: center; }
+#content .item      { margin-top: 10px; text-align: center;}
+#content .subtitle  { height: 39px; margin-top: -5px; padding: 0 10px 0 32px; font-size: 12px;
+                      background: #faf7f6 url(/images/popular_logo.png); background-repeat: no-repeat; background-position: 5% center;}
+#content .item img  { position: relative; z-index: 1; width: 250px; height: 221px; }
+#content .caption   { height: 30px; width: 250px; position: absolute; z-index: 99;  background: #fff; display: none; line-height: 30px}
+.video .caption     { width: 770px !important; }
+#content .caption a { color: #000; font-size: 12px;}
+#content .thanks    { color: #fff; font-size: 12px; font-weight: bold; background: #009fdd; }
+#content span.name  { font-weight: bold;  line-height: 39px; }
+#content span.votes { margin-top: 5px; }
+
+#winners .item      { height: 288px; background: #c9c9c9; }
+#winners .empty     { color: #8a8a8a; font-size: 18px; font-weight: bold;
+                      background-image: url(/images/winner_empty_logo.png); background-repeat: no-repeat; background-position: center 40%;}
+#winners .empty span{ position: relative; top: 190px; }
+#winners img        { position: relative; z-index: 1;}
+#winners .winner-lab{ z-index: 10; left: -83px; top: -294px;}
+
+#popular .item      { height: 261px; }
+
+#orbotix            { font-size: 18px; text-align: center; font-weight: normal;}
+#orbotix p          { margin-bottom: 80px; }
+#orbotix .item      { width: 380px; height: 234px; background: url(/images/orbotix_sampler.png);}

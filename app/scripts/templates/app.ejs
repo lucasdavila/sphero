@@ -1,6 +1,65 @@
 <div>
-  <p>Tricks</p>
-  <a id='upload' href='#'>Upload</a>
+  <header>
+    <ul>
+      <li class="number">1.</li>
+      <li class="text">
+        Capture your trick on video or with a photo.
+      </li>
 
-  <div id='recent_container'></div>
+      <li class="number">2.</li>
+      <li class="text small">
+        Post to Twitter or Instagram using #TricksWithBalls.
+      </li>
+
+      <li class="number">3.</li>
+      <li class="text">
+        Tell your friends to vote.
+      </li>
+
+      <li class="number">4.</li>
+      <li class="text">
+        Get ready to do it all again next week!
+      </li>
+    </ul>
+  </header>
+
+  <div id="container">
+
+    <div id="nav">
+      <div id="social">
+        <div class="xleft">
+          <iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=557575384319997" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+        </div>
+
+        <a href="https://twitter.com/share" class="xright twitter-share-button" data-url="http://testurl.something.com">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+
+      <br class="clear"/>
+
+      <p>
+        <a href="#" class="submit radius">SUBMIT YOUR TRICKS</a>
+      </p>
+
+      <br class="clear"/>
+
+      <div id="nav-links">
+        <a class="radius" href="#orbotix">Orbotix Tricks</a>
+        <a class="radius" href="#recent">Recent</a>
+        <a class="radius selected" href="#popular">Most Popular</a>
+      </div>
+    </div> <!-- nav -->
+
+    <div id="content">
+      <div id='recent_container' class='tab'></div>
+      <br class="clear"/>
+
+      <div id='popular_container' class='tab'></div>
+      <br class="clear"/>
+
+      <div id='orbotix_container' class='tab'></div>
+      <br class="clear"/>
+    </div>
+
+  </div>
 </div>

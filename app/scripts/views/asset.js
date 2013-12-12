@@ -7,7 +7,12 @@ sphero.Views = sphero.Views || {};
 
     sphero.Views.AssetView = Chute.View.extend({
 
-        template: JST['app/scripts/templates/asset.ejs']
+        template: function(data) {
+          if (typeof this.parent.itemTemplate == 'function')
+            return this.parent.itemTemplate(data);
+
+          return JST['app/scripts/templates/asset.ejs'](data);
+        }
 
     });
 

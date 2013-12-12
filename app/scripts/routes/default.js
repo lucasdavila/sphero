@@ -8,19 +8,32 @@ sphero.Routers = sphero.Routers || {};
   sphero.Routers.DefaultRouter = Backbone.Router.extend({
 
     initialize: function() {
-      this.appView = new sphero.Views.AppView();
-      this.appView.render();
+      sphero.views = sphero.views || {};
 
-      this.recentCollectionView = new sphero.Views.RecentCollectionView();
+      sphero.views.appView = new sphero.Views.AppView();
+      sphero.views.appView.render();
+
+      sphero.views.recentCollectionView = new sphero.Views.RecentCollectionView();
+      sphero.views.popularCollectionView = new sphero.Views.PopularCollectionView();
     },
 
     routes: {
-      '': 'recent'
+      '': 'recent',
+      'recent' : 'recent',
+      'popular' : 'popular'
     },
 
     recent: function() {
-      if (!this.recentCollectionView.rendered)
-        this.recentCollectionView.render();
+      this.renderViewOnce(sphero.views.recentCollectionView);
+    },
+
+    popular: function() {
+      this.renderViewOnce(sphero.views.popularCollectionView);
+    },
+
+    renderViewOnce: function(view) {
+      if (!view.rendered)
+        view.render();
     }
   });
 
