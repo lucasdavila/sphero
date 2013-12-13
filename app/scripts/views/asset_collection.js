@@ -5,49 +5,55 @@ sphero.Views = sphero.Views || {};
 (function () {
     'use strict';
 
-    //fake collection view, once Chute.CollectionView isn't available
-    sphero.Views.CollectionView = Chute.Display.extend({
+    sphero.Views.AssetCollectionView = Chute.Display.extend({
 
         initialize: function() {
-          this.listenTo(this, 'render', this.fetch_assets);
-          this.listenTo(this.data, 'fetch:success', this.render_assets);
+          this.listenTo(this.collection, 'load', this.handleCollectionLoad);
         },
+
+        events: {
+          'click a.load-more': 'nextCollectionPage'
+        },
+
+        template: JST['app/scripts/templates/asset_collection.ejs'],
 
         itemView: sphero.Views.AssetView,
 
         // optional
         // itemTemplate : JST['app/scripts/templates/foo.ejs'],
 
-        fetch_assets: function() {
-            this.data.fetch({
-                success: function(that) { that.trigger('fetch:success') }
-            });
+        fetchCollectionAndRender: function() {
+          this.collection.fetch();//{ success: function(collection) { collection.trigger('fetch:success') } });
+          this.render();
         },
 
-        render_assets: function() {
-          var that = this;
+        handleCollectionLoad: function() {
+          if (this.$el.find('.item').length > this.collection.perPage())
+            this.$el.masonry('appended', $('.item:not([style])'));
+          else
+            this.$el.masonry({ itemSelector: '.item', gutter: 10 });
+        },
 
-          _.each(this.data.models, function(model) {
-            (new that.itemView({ model: model, data: model, auto: ['template', 'dependencies'], parent: that })).render();
-          });
+        nextCollectionPage: function (e) {
+          e.preventDefault();
 
-          this.$el.masonry({ itemSelector: '.item', gutter: 10 });
+          this.collection.nextPage();
         }
     });
 
-    sphero.Views.RecentCollectionView = sphero.Views.CollectionView.extend({
+    sphero.Views.RecentCollectionView = sphero.Views.AssetCollectionView.extend({
 
       container: '#recent_container',
 
-      data: sphero.collections.recent
+      collection: sphero.collections.recent
 
     });
 
-    sphero.Views.PopularCollectionView = sphero.Views.CollectionView.extend({
+    sphero.Views.PopularCollectionView = sphero.Views.AssetCollectionView.extend({
 
       container: '#popular_container',
 
-      data: sphero.collections.popular
+      collection: sphero.collections.popular
 
     });
 

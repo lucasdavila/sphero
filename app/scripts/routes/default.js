@@ -24,16 +24,11 @@ sphero.Routers = sphero.Routers || {};
     },
 
     recent: function() {
-      this.renderViewOnce(sphero.views.recentCollectionView);
+      sphero.views.recentCollectionView.fetchCollectionAndRender();
     },
 
     popular: function() {
-      this.renderViewOnce(sphero.views.popularCollectionView);
-    },
-
-    renderViewOnce: function(view) {
-      if (!view.rendered)
-        view.render();
+      sphero.views.popularCollectionView.fetchCollectionAndRender();
     }
   });
 

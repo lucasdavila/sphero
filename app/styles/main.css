@@ -42,9 +42,11 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
                       background-position: 7% 55%; font-size: 14px;}
 
 #nav-links          { margin: 0 auto; width: 625px;}
-#nav-links a        { border: 2px solid #babec0; color: #abaeaf; width: 184px; height: 37px;
+.load-more, #nav-links a        { border: 2px solid #babec0; color: #abaeaf; width: 184px; height: 37px;
                       display: block; float: left; margin: 10px; font-size: 18px; line-height: 37px;}
 #nav-links .selected{ color:#1c2600; background: #fff; border-color: #fff; }
+
+.load-more { position: absolute; bottom: -60px; width: 100%; margin: 0; }
 
 #content            { font-family: 'Raleway', sans-serif; text-align: center; }
 #content .item      { margin-top: 10px; text-align: center;}
