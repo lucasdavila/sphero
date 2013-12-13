@@ -9,6 +9,7 @@ sphero.Views = sphero.Views || {};
 
         initialize: function() {
           this.listenTo(this, 'render', this.fixElPosition);
+          this.listenTo(this, 'render', this.checkHearted);
         },
 
         template: function(data) {
@@ -40,10 +41,18 @@ sphero.Views = sphero.Views || {};
           this.styleAttr = this.$el.attr('style');
 
           this.model.heart();
+
+          this.$el.find('.caption').addClass('thanks').html('Thanks!');
         },
 
         fixElPosition: function() {
           $('.item:not([style])').attr('style', this.styleAttr);
+        },
+
+        checkHearted: function() {
+          if (this.model.hearted()) {
+            this.$el.find('.caption').addClass('thanks').html('Thanks!');
+          }
         }
 
     });
