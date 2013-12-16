@@ -32,10 +32,14 @@ sphero.Views = sphero.Views || {};
             this.$el.masonry('appended', $('.item:not([style])'));
           else
             this.$el.masonry({ itemSelector: '.item', gutter: 10 });
+
+          this.$el.find('a.load-more').html('Load more');
         },
 
         nextCollectionPage: function (e) {
           e.preventDefault();
+
+          $(e.target).html('Loading...');
 
           this.collection.nextPage();
         }
