@@ -47,7 +47,9 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
                       display: block; float: left; margin: 10px; font-size: 18px; line-height: 37px;}
 #nav-links .selected{ color:#1c2600; background: #fff; border-color: #fff; }
 
-.load-more          { position: absolute; bottom: -60px; width: 100%; margin: 0 0 15px 0; }
+.asset_collection   { position: relative; }
+
+.load-more          { position: absolute; bottom: -60px; width: 766px; margin: 0 0 15px 0; }
 
 #content            { font-family: 'Raleway', sans-serif; text-align: center; }
 #content .item      { margin-top: 10px; text-align: center;}
