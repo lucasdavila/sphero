@@ -1,16 +1,16 @@
 /*global sphero, $*/
 
 window.sphero = {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Routers: {},
-    init: function () {
-        'use strict';
-    }
+  Models: {},
+  Collections: {},
+  Views: {},
+  Routers: {},
+  init: function () {
+    'use strict';
+  }
 };
 
 $(document).ready(function () {
-    'use strict';
-    sphero.init();
+  'use strict';
+  sphero.init();
 });
