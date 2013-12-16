@@ -3,68 +3,72 @@
 sphero.Views = sphero.Views || {};
 
 (function () {
-    'use strict';
+  'use strict';
 
-    sphero.Views.AssetCollectionView = Chute.Display.extend({
+  sphero.Views.AssetCollectionView = Chute.Display.extend({
 
-        initialize: function() {
-          this.listenTo(this.collection, 'load', this.handleCollectionLoad);
-        },
+    initialize: function() {
+      this.listenTo(this.collection, 'load', this.handleCollectionLoad);
+    },
 
-        events: {
-          'click a.load-more': 'nextCollectionPage'
-        },
+    events: {
+      'click a.load-more': 'nextCollectionPage'
+    },
 
-        template: JST['app/scripts/templates/asset_collection.ejs'],
+    template: JST['app/scripts/templates/asset_collection.ejs'],
 
-        itemView: sphero.Views.AssetView,
+    itemView: sphero.Views.AssetView,
 
-        // optional
-        // itemTemplate : JST['app/scripts/templates/foo.ejs'],
+    // optional
+    // itemTemplate : JST['app/scripts/templates/foo.ejs'],
 
-        fetchCollectionAndRender: function() {
-          this.collection.fetch();//{ success: function(collection) { collection.trigger('fetch:success') } });
-          this.render();
-        },
+    fetchCollectionAndRender: function() {
+      this.collection.fetch();//{ success: function(collection) { collection.trigger('fetch:success') } });
+      this.render();
+    },
 
-        handleCollectionLoad: function() {
-          if (this.$el.find('.item').length > this.collection.perPage())
-            this.$el.masonry('appended', $('.item:not([style])'));
-          else
-            this.$el.masonry({ itemSelector: '.item', gutter: 10 });
-        },
+    handleCollectionLoad: function() {
+      if (this.$el.find('.item').length > this.collection.perPage())
+        this.$el.masonry('appended', $('.item:not([style])'));
+      else
+        this.$el.masonry({ itemSelector: '.item', gutter: 10 });
 
-        nextCollectionPage: function (e) {
-          e.preventDefault();
+      this.$el.find('a.load-more').html('Load more');
+    },
 
-          this.collection.nextPage();
-        }
-    });
+    nextCollectionPage: function (e) {
+      e.preventDefault();
 
-    sphero.Views.RecentCollectionView = sphero.Views.AssetCollectionView.extend({
+      $(e.target).html('Loading...');
 
-      container: '#recent_container',
+      this.collection.nextPage();
+    }
+  });
 
-      collection: sphero.collections.recent
+  sphero.Views.RecentCollectionView = sphero.Views.AssetCollectionView.extend({
 
-    });
+    container: '#recent_container',
 
-    sphero.Views.PopularCollectionView = sphero.Views.AssetCollectionView.extend({
+    collection: sphero.collections.recent
 
-      container: '#popular_container',
+  });
 
-      collection: sphero.collections.popular
+  sphero.Views.PopularCollectionView = sphero.Views.AssetCollectionView.extend({
 
-    });
+    container: '#popular_container',
 
-    sphero.Views.OrbotixView = sphero.Views.AssetCollectionView.extend({
+    collection: sphero.collections.popular
 
-      container: '#orbotix_container',
+  });
 
-      template: JST['app/scripts/templates/orbotix.ejs'],
+  sphero.Views.OrbotixView = sphero.Views.AssetCollectionView.extend({
 
-      render: function(){
-        $(this.container).html(this.template);
-      }
-    });
+    container: '#orbotix_container',
+
+    template: JST['app/scripts/templates/orbotix.ejs'],
+
+    render: function(){
+      $(this.container).html(this.template);
+    }
+  });
 })();

@@ -3,90 +3,91 @@
 sphero.Views = sphero.Views || {};
 
 (function () {
-    'use strict';
+  'use strict';
 
-    sphero.Views.AssetView = Chute.View.extend({
+  sphero.Views.AssetView = Chute.View.extend({
 
-        initialize: function() {
-          this.listenTo(this, 'render', this.fixElPosition);
-          this.listenTo(this, 'render', this.checkHearted);
-        },
+    initialize: function() {
+      this.listenTo(this, 'render', this.fixElPosition);
+      this.listenTo(this, 'render', this.checkHearted);
+    },
 
-        template: function(data) {
-          if (typeof this.parent.itemTemplate == 'function')
-            return this.parent.itemTemplate(data);
+    template: function(data) {
+      if (typeof this.parent.itemTemplate == 'function')
+        return this.parent.itemTemplate(data);
 
-          return JST['app/scripts/templates/asset.ejs'](data);
-        },
+      return JST['app/scripts/templates/asset.ejs'](data);
+    },
 
-        events: {
-          'mouseenter img': 'showCaption',
-          'mouseleave img': 'hideCaption',
-          'click a.vote': 'vote',
-          'click a.modal-link': 'openModal'
-        },
+    events: {
+      'mouseenter img': 'showCaption',
+      'mouseleave img': 'hideCaption',
+      'click a.vote': 'vote',
+      'click a.modal-link': 'openModal'
+    },
 
-        showCaption: function() {
-          this.$el.find('.caption').slideDown();
-        },
+    showCaption: function() {
+      this.$el.find('.caption').slideDown();
+    },
 
-        hideCaption: function() {
-          if (this.$el.find('.caption:hover').length > 0)
-            return;
+    hideCaption: function() {
+      if (this.$el.find('.caption:hover').length > 0)
+        return;
 
-          this.$el.find('.caption').slideUp();
-        },
+      this.$el.find('.caption').slideUp();
+    },
 
-        vote: function(e) {
-          e.preventDefault();
-          this.styleAttr = this.$el.attr('style');
+    vote: function(e) {
+      e.preventDefault();
 
-          this.model.heart();
+      this.styleAttr = this.$el.attr('style');
 
-          this.$el.find('.caption').addClass('thanks').html('Thanks!');
-        },
+      this.model.heart();
 
-        fixElPosition: function() {
-          $('.item:not([style])').attr('style', this.styleAttr);
-        },
+      this.$el.find('.caption').addClass('thanks').html('Thanks!');
+    },
 
-        checkHearted: function() {
-          if (this.model.hearted())
-            this.$el.find('.caption').addClass('thanks').html('Thanks!');
-        },
+    fixElPosition: function() {
+      $('.item:not([style])').attr('style', this.styleAttr);
+    },
 
-        openModal: function (e) {
-          e.preventDefault();
+    checkHearted: function() {
+      if (this.model.hearted())
+        this.$el.find('.caption').addClass('thanks').html('Thanks!');
+    },
 
-          var modalView = new sphero.Views.ModalView({model: this.model, parent: this});
-          modalView.render();
-        }
-    });
+    openModal: function (e) {
+      e.preventDefault();
 
-    sphero.Views.ModalView = Chute.View.extend({
-      template: JST['app/scripts/templates/modal.ejs'],
+      var modalView = new sphero.Views.ModalView({model: this.model, parent: this});
+      modalView.render();
+    }
+  });
 
-      initialize: function() {
-        this.listenTo(this, 'render', this.showModal);
-      },
+  sphero.Views.ModalView = Chute.View.extend({
+    template: JST['app/scripts/templates/modal.ejs'],
 
-      events: {
-        'click a.vote': 'vote'
-      },
+    initialize: function() {
+      this.listenTo(this, 'render', this.showModal);
+    },
 
-      vote: function(e) {
-        this.parent.vote.apply(this, [e]);
-      },
+    events: {
+      'click a.vote': 'vote'
+    },
 
-      showModal: function() {
-        $.colorbox({
-          html: this.$el,
-          close: '<img src="/images/close.png"/>'
-        });
+    vote: function(e) {
+      this.parent.vote.apply(this, [e]);
+    },
 
-        if (this.model.hearted())
-          this.$el.find('.caption').addClass('thanks').html('Thanks!');
-      }
-    });
+    showModal: function() {
+      $.colorbox({
+        html: this.$el,
+        close: '<img src="/images/close.png"/>'
+      });
+
+      if (this.model.hearted())
+        this.$el.find('.caption').addClass('thanks').html('Thanks!');
+    }
+  });
 
 })();
