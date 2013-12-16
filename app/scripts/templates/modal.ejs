@@ -1,0 +1,25 @@
+<div class="modal-content">
+
+  <% if (type == 'video') { %>
+
+    <video id="video-<%= id %>" class="video-js vjs-default-skin asset-content"
+      controls width="448" poster="<%= url %>">
+
+      <source src="<%= video_url %>" type='video/mp4' />
+
+    </video>
+
+  <% } else { %>
+    <img src="<%= source.source_url %>" class="asset-content"/>
+  <% } %>
+
+  <div class="caption">
+    <a href="#" class='vote'>vote for this</a>
+  </div>
+
+  <p><%= username %></p>
+
+  <p class="modal-caption"><%= caption %></p>
+
+  <img src="/images/powered.png" class="powered"/>
+</div>

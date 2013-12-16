@@ -22,7 +22,8 @@ sphero.Views = sphero.Views || {};
         events: {
           'mouseenter img': 'showCaption',
           'mouseleave img': 'hideCaption',
-          'click a.vote': 'vote'
+          'click a.vote': 'vote',
+          'click a.modal-link': 'openModal'
         },
 
         showCaption: function() {
@@ -50,11 +51,42 @@ sphero.Views = sphero.Views || {};
         },
 
         checkHearted: function() {
-          if (this.model.hearted()) {
+          if (this.model.hearted())
             this.$el.find('.caption').addClass('thanks').html('Thanks!');
-          }
-        }
+        },
 
+        openModal: function (e) {
+          e.preventDefault();
+
+          var modalView = new sphero.Views.ModalView({model: this.model, parent: this});
+          modalView.render();
+        }
+    });
+
+    sphero.Views.ModalView = Chute.View.extend({
+      template: JST['app/scripts/templates/modal.ejs'],
+
+      initialize: function() {
+        this.listenTo(this, 'render', this.showModal);
+      },
+
+      events: {
+        'click a.vote': 'vote'
+      },
+
+      vote: function(e) {
+        this.parent.vote.apply(this, [e]);
+      },
+
+      showModal: function() {
+        $.colorbox({
+          html: this.$el,
+          close: '<img src="/images/close.png"/>'
+        });
+
+        if (this.model.hearted())
+          this.$el.find('.caption').addClass('thanks').html('Thanks!');
+      }
     });
 
 })();

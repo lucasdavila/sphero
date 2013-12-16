@@ -51,15 +51,15 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
 
 #content            { font-family: 'Raleway', sans-serif; text-align: center; }
 #content .item      { margin-top: 10px; text-align: center;}
-#content .subtitle  { height: 39px; margin-top: -5px; padding: 0 10px 0 32px; font-size: 12px;
+.subtitle           { height: 39px; margin-top: -5px; padding: 0 10px 0 32px; font-size: 12px;
                       background: #faf7f6 url(/images/popular_logo.png); background-repeat: no-repeat; background-position: 5% center;}
-#content .item img  { position: relative; z-index: 1; width: 250px; height: 221px; }
-#content .caption   { height: 30px; width: 250px; position: absolute; z-index: 99;  background: #fff; display: none; line-height: 30px}
-/*.video .caption     { width: 770px !important; }*/
-#content .caption a { color: #000; font-size: 12px;}
-#content .thanks    { color: #fff; font-size: 12px; font-weight: bold; background: #009fdd; }
-#content span.name  { font-weight: bold;  line-height: 39px; }
-#content span.votes { margin-top: 5px; }
+#content .item img  { position: relative; width: 250px; height: 221px; }
+.caption            { height: 30px; width: 250px; position: absolute; z-index: 99;  background: #fff; display: none; line-height: 30px}
+.caption a          { color: #000; font-size: 12px;}
+.thanks             { color: #fff; font-size: 12px; font-weight: bold; background: #009fdd; }
+
+span.name           { font-weight: bold;  line-height: 39px; }
+span.votes          { margin-top: 5px; }
 
 #winners .item      { height: 288px; background: #c9c9c9; }
 #winners .empty     { color: #8a8a8a; font-size: 18px; font-weight: bold;
@@ -74,3 +74,18 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
 #orbotix_container p{ margin-bottom: 80px; }
 #orbotix_container .item { width: 380px; height: 234px; margin: 0 10px 10px 0; float: left;}
 #orbotix_container .no-margin { margin-right: 0;}
+
+#cboxLoadedContent          { padding:10px; background:#fff; z-index: 100000; width: 548px; text-align: center; height: 610px;}
+.modal-content              { width: 448px; margin: 0 auto; color: #afafaf; text-align: left;}
+.modal-caption              { font-size: 13px; }
+#cboxContent .asset-content { width: 448px !important; margin-top: 20px;}
+#cboxContent .caption { width: 446px; display: block; position: inherit; height: 35px; line-height: 35px;
+                           border: 1px solid #CACACA; font-weight: bold; margin: -6px auto 0; text-align: center;}
+
+#cboxContent .caption:hover { background: #ebebeb; }
+#cboxContent .thanks:hover  { background: #009fdd; }
+
+
+#colorbox #cboxClose { top: 0; right: 0; margin-top: -630px;}
+
+.powered            { right: 55px; position:absolute; bottom: 20px; }
