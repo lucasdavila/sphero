@@ -32,10 +32,6 @@ sphero.Views = sphero.Views || {};
 
         },
 
-        handleUpload: function(urls) {
-          console.log(urls);
-        },
-
         changeTab: function(e) {
           var $target = $(e.target);
 
