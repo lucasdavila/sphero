@@ -57,4 +57,14 @@ sphero.Views = sphero.Views || {};
 
     });
 
+    sphero.Views.OrbotixView = sphero.Views.AssetCollectionView.extend({
+
+      container: '#orbotix_container',
+
+      template: JST['app/scripts/templates/orbotix.ejs'],
+
+      render: function(){
+        $(this.container).html(this.template);
+      }
+    });
 })();

@@ -70,6 +70,7 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
 
 #popular .item      { height: 261px; }
 
-#orbotix            { font-size: 18px; text-align: center; font-weight: normal;}
-#orbotix p          { margin-bottom: 80px; }
-#orbotix .item      { width: 380px; height: 234px; background: url(/images/orbotix_sampler.png);}
+#orbotix_container  { font-size: 18px; text-align: center; font-weight: normal;}
+#orbotix_container p{ margin-bottom: 80px; }
+#orbotix_container .item { width: 380px; height: 234px; margin: 0 10px 10px 0; float: left;}
+#orbotix_container .no-margin { margin-right: 0;}

@@ -15,12 +15,14 @@ sphero.Routers = sphero.Routers || {};
 
       sphero.views.recentCollectionView = new sphero.Views.RecentCollectionView();
       sphero.views.popularCollectionView = new sphero.Views.PopularCollectionView();
+      sphero.views.orbotixView = new sphero.Views.OrbotixView();
     },
 
     routes: {
       '': 'recent',
       'recent' : 'recent',
-      'popular' : 'popular'
+      'popular' : 'popular',
+      'orbotix' : 'orbotix'
     },
 
     recent: function() {
@@ -29,6 +31,10 @@ sphero.Routers = sphero.Routers || {};
 
     popular: function() {
       sphero.views.popularCollectionView.fetchCollectionAndRender();
+    },
+
+    orbotix: function() {
+      sphero.views.orbotixView.render();
     }
   });
 
