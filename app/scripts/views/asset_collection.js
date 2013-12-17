@@ -23,7 +23,7 @@ sphero.Views = sphero.Views || {};
     // itemTemplate : JST['app/scripts/templates/foo.ejs'],
 
     fetchCollectionAndRender: function() {
-      this.collection.fetch();//{ success: function(collection) { collection.trigger('fetch:success') } });
+      this.collection.fetch();
       this.render();
     },
 
