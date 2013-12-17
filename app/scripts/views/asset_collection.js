@@ -96,10 +96,7 @@ sphero.Views = sphero.Views || {};
 
     container: '#orbotix_container',
 
-    template: JST['app/scripts/templates/orbotix.ejs'],
+    template: JST['app/scripts/templates/orbotix.ejs']
 
-    render: function(){
-      $(this.container).html(this.template);
-    }
   });
 })();
