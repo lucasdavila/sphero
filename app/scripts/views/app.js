@@ -6,6 +6,9 @@ sphero.Views = sphero.Views || {};
   'use strict';
 
   sphero.Views.AppView = Chute.View.extend({
+    _initialize: function() {
+      this.listenTo(this, 'render', this.hideUnselectedTabs);
+    },
 
     template: JST['app/scripts/templates/app.ejs'],
 
@@ -85,6 +88,12 @@ sphero.Views = sphero.Views || {};
 
       $target.siblings().removeClass('selected');
       $target.addClass('selected');
+    },
+
+    hideUnselectedTabs: function() {
+      var a = this.$el.find('#nav-links a:not(.selected)').map(function() {
+        $($(this).attr('href')+ '_container').hide();
+      });
     }
 
   });

@@ -7,7 +7,7 @@ sphero.Views = sphero.Views || {};
 
   sphero.Views.AssetCollectionView = Chute.Display.extend({
 
-    initialize: function() {
+    _initialize: function() {
       this.listenTo(this.collection, 'load', this.handleCollectionLoad);
     },
 
@@ -23,7 +23,7 @@ sphero.Views = sphero.Views || {};
     // itemTemplate : JST['app/scripts/templates/foo.ejs'],
 
     fetchCollectionAndRender: function() {
-      this.collection.fetch();//{ success: function(collection) { collection.trigger('fetch:success') } });
+      this.collection.fetch();
       this.render();
     },
 
@@ -53,11 +53,42 @@ sphero.Views = sphero.Views || {};
 
   });
 
+  sphero.Views.WinnersCollectionView = sphero.Views.AssetCollectionView.extend({
+
+    _initialize: function() {
+      this.listenTo(this.collection, 'load', this.handleCollectionLoad);
+      this.listenTo(this.collection, 'load', this.appendEmptyAssets);
+      this.listenTo(this, 'render', this.hideLoadMoreButton);
+    },
+
+    container: '#winners_container',
+
+    collection: sphero.collections.winners,
+
+    itemTemplate : JST['app/scripts/templates/winner.ejs'],
+
+    hideLoadMoreButton: function() {
+      this.$el.find('a.load-more').hide();
+    },
+
+    appendEmptyAssets: function() {
+      for (var i = this.$el.find('.item').length; i < 6; i++) {
+        var emptyAssetTemplate = JST['app/scripts/templates/empty_asset.ejs']({ week: i+1 });
+        $(emptyAssetTemplate).appendTo(this.$el);
+      };
+
+      this.$el.masonry('appended', $('.item:not([style])'));
+    }
+
+  });
+
   sphero.Views.PopularCollectionView = sphero.Views.AssetCollectionView.extend({
 
     container: '#popular_container',
 
-    collection: sphero.collections.popular
+    collection: sphero.collections.popular,
+
+    append: true
 
   });
 
@@ -65,10 +96,7 @@ sphero.Views = sphero.Views || {};
 
     container: '#orbotix_container',
 
-    template: JST['app/scripts/templates/orbotix.ejs'],
+    template: JST['app/scripts/templates/orbotix.ejs']
 
-    render: function(){
-      $(this.container).html(this.template);
-    }
   });
 })();
