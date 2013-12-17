@@ -55,7 +55,8 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
 #content .item      { margin-top: 10px; text-align: center;}
 .subtitle           { height: 39px; margin-top: -5px; padding: 0 10px 0 32px; font-size: 12px;
                       background: #faf7f6 url(/images/popular_logo.png); background-repeat: no-repeat; background-position: 5% center;}
-#content .item img  { position: relative; width: 250px; height: 221px; }
+
+#content .item a img  { position: relative; width: 250px; height: 221px; }
 .caption            { height: 30px; width: 250px; position: absolute; z-index: 99;  background: #fff; display: none; line-height: 30px}
 .caption a          { color: #000; font-size: 12px;}
 .thanks             { color: #fff; font-size: 12px; font-weight: bold; background: #009fdd; }
@@ -63,12 +64,11 @@ a.submit            { color: #fff; font-family: 'Raleway', sans-serif; padding: 
 span.name           { font-weight: bold;  line-height: 39px; }
 span.votes          { margin-top: 5px; }
 
-#winners .item      { height: 288px; background: #c9c9c9; }
-#winners .empty     { color: #8a8a8a; font-size: 18px; font-weight: bold;
-                      background-image: url(/images/winner_empty_logo.png); background-repeat: no-repeat; background-position: center 40%;}
-#winners .empty span{ position: relative; top: 190px; }
-#winners img        { position: relative; z-index: 1;}
-#winners .winner-lab{ z-index: 10; left: -83px; top: -294px;}
+#winners_container .item { background: #c9c9c9; width: 250px; height: 221px; }
+#winners_container .empty { color: #8a8a8a; font-size: 18px; font-weight: bold;
+                            background-image: url(/images/winner_empty_logo.png); background-repeat: no-repeat; background-position: center 40%; }
+#winners_container .empty span { position: relative; top: 150px; }
+#winners_container .winner-lab { z-index: 10; left: -84px; top: -227px; position: relative;}
 
 #popular .item      { height: 261px; }
 

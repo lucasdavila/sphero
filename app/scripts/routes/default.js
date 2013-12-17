@@ -15,6 +15,7 @@ sphero.Routers = sphero.Routers || {};
 
       sphero.views.recentCollectionView = new sphero.Views.RecentCollectionView();
       sphero.views.popularCollectionView = new sphero.Views.PopularCollectionView();
+      sphero.views.winnersCollectionView = new sphero.Views.WinnersCollectionView();
       sphero.views.orbotixView = new sphero.Views.OrbotixView();
     },
 
@@ -31,6 +32,7 @@ sphero.Routers = sphero.Routers || {};
 
     popular: function() {
       sphero.views.popularCollectionView.fetchCollectionAndRender();
+      sphero.views.winnersCollectionView.fetchCollectionAndRender();
     },
 
     orbotix: function() {
