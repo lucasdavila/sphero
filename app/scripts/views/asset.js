@@ -7,7 +7,7 @@ sphero.Views = sphero.Views || {};
 
   sphero.Views.AssetView = Chute.View.extend({
 
-    initialize: function() {
+    _initialize: function() {
       this.listenTo(this, 'render', this.fixElPosition);
       this.listenTo(this, 'render', this.checkHearted);
     },
@@ -64,7 +64,7 @@ sphero.Views = sphero.Views || {};
   sphero.Views.ModalView = Chute.View.extend({
     template: JST['app/scripts/templates/modal.ejs'],
 
-    initialize: function() {
+    _initialize: function() {
       this.listenTo(this, 'render', this.showModal);
     },
 
