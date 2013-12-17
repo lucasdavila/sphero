@@ -20,8 +20,8 @@ sphero.Views = sphero.Views || {};
     },
 
     events: {
-      'mouseenter img': 'showCaption',
-      'mouseleave img': 'hideCaption',
+      'mouseenter .subcontent': 'showCaption',
+      'mouseleave .subcontent': 'hideCaption',
       'click a.vote': 'vote',
       'click a.modal-link': 'openModal'
     },
@@ -31,9 +31,6 @@ sphero.Views = sphero.Views || {};
     },
 
     hideCaption: function() {
-      if (this.$el.find('.caption:hover').length > 0)
-        return;
-
       this.$el.find('.caption').slideUp();
     },
 
@@ -76,7 +73,11 @@ sphero.Views = sphero.Views || {};
     },
 
     vote: function(e) {
+      var parentStyle = this.parent.$el[0].styleAttr;
+
       this.parent.vote.apply(this, [e]);
+
+      $('.item:not([style])').style = parentStyle;
     },
 
     showModal: function() {
