@@ -31,7 +31,7 @@ header li.number    { float: left; font-weight: bold; margin: 7px 1px 0 0;}
                       background: #e6eaec url(/images/content_bg.png); background-repeat: no-repeat; }
 
 #social             { width: 190px; margin: 0 auto; margin-bottom: 12px;}
-.twitter-share-button { margin: -27px -30px 0 0; }
+#social .twitter-share-button { margin: -27px -30px 0 0; }
 
 #content            { padding: 19px;}
 
@@ -88,6 +88,7 @@ span.votes          { margin-top: 5px; }
 #cboxContent .thanks:hover  { background: #009fdd; }
 
 
-#colorbox #cboxClose { top: 0; right: 0; margin-top: -630px;}
+#colorbox #cboxClose  { top: 0; right: 0; margin-top: -630px;}
 
-.powered            { right: 55px; position:absolute; bottom: 20px; }
+#social-networks      { margin: 40px 28px 0 0; }
+#social-networks .social { max-width: 90px !important; padding-right: 20px; }
