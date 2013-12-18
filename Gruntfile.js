@@ -170,8 +170,17 @@ module.exports = function (grunt) {
         usemin: {
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            js: ['<%= yeoman.dist %>/scripts/*main.js'],
+
             options: {
-                dirs: ['<%= yeoman.dist %>']
+                assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images'],
+                patterns: {
+                    js: [
+                            [/(powered\.png)/, 'Replacing reference to powered.png'],
+                            [/(winner\.png)/, 'Replacing reference to winner.png'],
+                            [/(close\.png)/, 'Replacing reference to close.png'],
+                    ]
+                }
             }
         },
         imagemin: {
