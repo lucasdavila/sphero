@@ -23,7 +23,8 @@ sphero.Routers = sphero.Routers || {};
       '': 'recent',
       'recent' : 'recent',
       'popular' : 'popular',
-      'orbotix' : 'orbotix'
+      'orbotix' : 'orbotix',
+      'assets/:album/:shortcut' : 'asset'
     },
 
     recent: function() {
@@ -37,6 +38,20 @@ sphero.Routers = sphero.Routers || {};
 
     orbotix: function() {
       sphero.views.orbotixView.render();
+    },
+
+    asset: function(album, shortcut) {
+      var model = new Chute.Models.Asset(null, { album: album, asset: shortcut });
+
+      // inject album on model, because this attribute is used on modal template.
+      model.attributes.album = location.hash.replace('#', '').split('/')[1];
+
+      model.fetch({ success: function(){
+        var assetView = new sphero.Views.AssetView({ model: model });
+        var modalView = new sphero.Views.ModalView({ model: model, parent: assetView });
+
+        modalView.render();
+      }});
     }
   });
 

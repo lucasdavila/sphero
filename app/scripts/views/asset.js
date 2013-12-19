@@ -60,7 +60,17 @@ sphero.Views = sphero.Views || {};
   });
 
   sphero.Views.ModalView = Chute.View.extend({
-    template: JST['app/scripts/templates/modal.ejs'],
+    template: function(data) {
+      var defaultData = {
+        encoded_asset_url: encodeURIComponent(window.location.origin + '/#assets/' + data.album + '/' + data.shortcut),
+        encoded_source_url: encodeURIComponent(data.source.source_url),
+        encoded_caption: encodeURIComponent(data.caption || '')
+      };
+
+      data = _.extend(defaultData, data);
+
+      return JST['app/scripts/templates/modal.ejs'](data);
+    },
 
     _initialize: function() {
       // we don't want to render this view each time the user votes
