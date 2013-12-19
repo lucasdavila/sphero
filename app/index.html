@@ -10,18 +10,18 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="bower_components/jquery-colorbox/example4/colorbox.css">
 
-        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
-        <link href="//vjs.zencdn.net/4.3/video-js.css" rel="stylesheet">
+        <!-- using local styles instead of cdn, because remote styles are't included when grunt generate the dist package -->
+        <link rel="stylesheet" href="styles/google_raleway_font.css">
+        <link rel="stylesheet" href="styles/video-js.css">
         <!-- endbuild -->
+
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
-
-        <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -29,9 +29,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
         <div id='app_container'></div>
-
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--script>
@@ -59,6 +57,7 @@
         <script src="scripts/vendor/chutejs/components/api.min.js"></script>
         <script src="scripts/vendor/chute.chooser-1.0.js"></script>
         <script src="scripts/vendor/video.js"></script>
+        <script src="scripts/vendor/pinit.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
@@ -70,5 +69,5 @@
         <script src="scripts/views/asset_collection.js"></script>
         <script src="scripts/routes/default.js"></script>
         <!-- endbuild -->
-</body>
+    </body>
 </html>
