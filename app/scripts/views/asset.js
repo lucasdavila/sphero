@@ -8,8 +8,12 @@ sphero.Views = sphero.Views || {};
   sphero.Views.AssetView = Chute.View.extend({
 
     _initialize: function() {
-      this.listenTo(this, 'render', this.fixElPosition);
-      this.listenTo(this, 'render', this.checkHearted);
+      // we don't want to render this view each time the user votes,
+      // or the new element will lose its masonry style and events.
+      this.stopListening(this.model, 'change');
+
+      this.listenTo(this, 'render', this.thanks);
+      this.listenTo(this.model, 'change:hearts', this.thanks);
     },
 
     template: function(data) {
@@ -23,7 +27,7 @@ sphero.Views = sphero.Views || {};
       'mouseenter .subcontent': 'showCaption',
       'mouseleave .subcontent': 'hideCaption',
       'click a.vote': 'vote',
-      'click a.modal-link': 'openModal'
+      'click a.modal-link': 'showModal'
     },
 
     showCaption: function() {
@@ -37,23 +41,17 @@ sphero.Views = sphero.Views || {};
     vote: function(e) {
       e.preventDefault();
 
-      this.styleAttr = this.$el.attr('style');
-
       this.model.heart();
 
-      this.$el.find('.caption').addClass('thanks').html('Thanks!');
+      this.$el.find('.hearts').html(this.model.get('hearts') + 1);
     },
 
-    fixElPosition: function() {
-      $('.item:not([style])').attr('style', this.styleAttr);
-    },
-
-    checkHearted: function() {
+    thanks: function() {
       if (this.model.hearted())
         this.$el.find('.caption').addClass('thanks').html('Thanks!');
     },
 
-    openModal: function (e) {
+    showModal: function (e) {
       e.preventDefault();
 
       var modalView = new sphero.Views.ModalView({model: this.model, parent: this});
@@ -65,29 +63,29 @@ sphero.Views = sphero.Views || {};
     template: JST['app/scripts/templates/modal.ejs'],
 
     _initialize: function() {
-      this.listenTo(this, 'render', this.showModal);
+      // we don't want to render this view each time the user votes
+      this.stopListening(this.model, 'change');
+
+      this.listenTo(this, 'render', this.show);
+      this.listenTo(this.model, 'change:hearts', this.thanks);
     },
 
     events: {
       'click a.vote': 'vote'
     },
 
-    vote: function(e) {
-      var parentStyle = this.parent.$el[0].styleAttr;
+    show: function() {
+      $.colorbox({ html: this.$el, close: '<img src="/images/close.png"/>' });
 
-      this.parent.vote.apply(this, [e]);
-
-      $('.item:not([style])').style = parentStyle;
+      this.thanks();
     },
 
-    showModal: function() {
-      $.colorbox({
-        html: this.$el,
-        close: '<img src="/images/close.png"/>'
-      });
+    vote: function(e) {
+      this.parent.vote(e);
+    },
 
-      if (this.model.hearted())
-        this.$el.find('.caption').addClass('thanks').html('Thanks!');
+    thanks: function() {
+      this.parent.thanks.apply(this);
     }
   });
 
