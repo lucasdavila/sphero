@@ -198,8 +198,7 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/bower_components/jquery-colorbox/example4/colorbox.css'
+                        '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
                 }
             }
